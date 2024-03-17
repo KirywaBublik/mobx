@@ -1,7 +1,10 @@
-import { createEvent, createStore } from 'effector'
+import { createEffect, createStore } from "effector";
 
-export const textValue = createEvent<string>()
 
-export const $store = createStore("")
+export const add = createEffect()
+export const del = createEffect()
+export const sendNumber = createEffect()
 
-$store.on(textValue, (_, text) => text)
+export const $store = createStore<number>(0)
+    .on(add, (state) => state + 1)
+    .on(del, (state) => state - 1)

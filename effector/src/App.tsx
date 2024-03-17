@@ -1,21 +1,14 @@
 import { useUnit } from "effector-react";
-import { $store, textValue } from "./store";
+import { $store, add, del } from "./store";
 
 const App = () => {
 
-  const [text, textChange] = useUnit([$store, textValue])
-
+  const count = useUnit($store)
   return (
     <>
-      <input value={text}
-        onChange={(e) => textChange(e.currentTarget.value)}
-        type="text" />
-      <p>
-        {text}
-      </p>
-      <p>
-        siae: {text.length}
-      </p>
+      {count}
+      <button onClick={add}>Add</button>
+      <button onClick={del}>Del</button>
     </>
   );
 };
