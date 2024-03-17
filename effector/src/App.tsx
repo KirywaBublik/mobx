@@ -1,15 +1,22 @@
 import { useUnit } from "effector-react";
-import { $store, add, del } from "./store";
+import { $store, decrementButtonPressed, incrementButtonPressed } from "./store";
 
 const App = () => {
 
-  const count = useUnit($store)
+  const state = useUnit($store)
+
   return (
-    <>
-      {count}
-      <button onClick={add}>Add</button>
-      <button onClick={del}>Del</button>
-    </>
+    <div>
+      <button onClick={() => decrementButtonPressed()}>
+        -1
+      </button>
+      <span>
+        {state}
+      </span>
+      <button onClick={() => incrementButtonPressed()}>
+        +1
+      </button>
+    </div>
   );
 };
 
