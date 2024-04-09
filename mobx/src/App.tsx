@@ -1,21 +1,18 @@
 import { observer } from "mobx-react-lite";
 import todoStore from "./store/todo-store";
+import { useEffect } from "react";
 
 const App = observer(() => {
 
-    
-    return(
+    useEffect(() => {
+        todoStore.getPostsActions();
+    }, [])
+
+    console.log(todoStore.todo.map(item => item.id))
+
+    return (
         <div>
-            <button onClick={() => todoStore.addTodo()}>add</button>
-            {
-                todoStore.todo.map(t => (
-                    <div key={t.id}>
-                        <input type="checkbox" checked={t.complete} onChange={() => todoStore.completeTodo(t.id)} />
-                        {t.title}
-                        <button onClick={() => todoStore.removeTodo(t.id)}>remove</button>
-                    </div>
-                ))
-            }
+            123
         </div>
     )
 });
