@@ -4,15 +4,15 @@ import { useEffect } from "react";
 
 const App = observer(() => {
 
+    const { getPostsActions, todo } = todoStore;
+
     useEffect(() => {
-        todoStore.getPostsActions();
+        getPostsActions();
     }, [])
 
-    console.log(todoStore.todo.map(item => item.id))
-
+    console.log(todo?.value)
     return (
         <div>
-            123
         </div>
     )
 });

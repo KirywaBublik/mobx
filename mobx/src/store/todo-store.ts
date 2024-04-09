@@ -1,25 +1,16 @@
-import { makeAutoObservable, runInAction } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import { getPosts, Posts } from '../api'
+import { fromPromise, IPromiseBasedObservable } from 'mobx-utils'
 
 class TodoStore {
-	todo: Posts[] = []
-	isLoading = false
+	todo?: IPromiseBasedObservable<Posts[]>;
 
 	constructor() {
 		makeAutoObservable(this)
 	}
 
-	getPostsActions = async () => {
-		try {
-			this.isLoading = true
-			const res = await getPosts()
-			runInAction(() => {
-				this.todo = res
-				this.isLoading = false
-			})
-		} catch {
-			this.isLoading = false
-		}
-	}
+	getPostsActions = () => {
+        this.todo = fromPromise(getPosts())
+    }
 }
 export default new TodoStore()
