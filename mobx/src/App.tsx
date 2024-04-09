@@ -1,20 +1,22 @@
+import { observer } from "mobx-react-lite";
+import todoStore from "./store/todo-store";
 
-interface CounterProp {
-  count: number;
-  addCount: () => void;
-  removeCount: () => void;
-  reset: number;
-}
+const App = observer(() => {
 
-const App = ({ count, addCount, removeCount, reset }: CounterProp) => {
-
-  return (
-    <>
-      {count}
-      <button onClick={() => addCount()}>+</button>
-      <button onClick={() => removeCount()}>-</button>
-      {reset}
-    </>
-  )
-};
+    
+    return(
+        <div>
+            <button onClick={() => todoStore.addTodo()}>add</button>
+            {
+                todoStore.todo.map(t => (
+                    <div key={t.id}>
+                        <input type="checkbox" checked={t.complete} onChange={() => todoStore.completeTodo(t.id)} />
+                        {t.title}
+                        <button onClick={() => todoStore.removeTodo(t.id)}>remove</button>
+                    </div>
+                ))
+            }
+        </div>
+    )
+});
 export default App;
