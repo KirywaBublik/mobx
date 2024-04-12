@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
-import { context } from "./main.tsx";
+import { context } from "../main.tsx";
 import { Link } from "react-router-dom";
-import { getAuthToken } from "./sessionStorega";
+import { getAuthToken } from "../utils/session/sessionStorega.ts";
 
 const Header = observer(() => {
 

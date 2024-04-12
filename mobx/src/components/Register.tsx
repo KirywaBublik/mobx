@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form"
 import { observer } from "mobx-react-lite"
 import { useContext } from "react"
-import { context } from "./main"
+import { context } from "../main"
 
 
 export interface Inputs {

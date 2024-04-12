@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
-import { fetchUserProfile, submitForm } from '../api'
-import { Inputs } from '../Register'
-import { clearAuth } from '../sessionStorega'
+import { fetchUserProfile, submitForm } from '../api/api'
+import { Inputs } from '../components/Register'
+import { clearAuth } from '../utils/session/sessionStorega'
 
 export default class UserStore {
 	user = ''

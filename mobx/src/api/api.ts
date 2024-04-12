@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { Inputs } from './Register'
-import { getAuthToken, setAuth } from './sessionStorega.ts'
+import { Inputs } from '../components/Register.tsx'
+import { getAuthToken, setAuth } from '../utils/session/sessionStorega.ts'
 const BASE_URL = `https://affdf12e9349600c.mokky.dev/`
 
 export interface UserProfile {
